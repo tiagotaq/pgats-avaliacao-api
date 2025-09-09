@@ -85,7 +85,11 @@ API REST e GraphQL para cadastro de usuários e pets, com autenticação JWT e d
 - Endpoints protegidos exigem autenticação via Bearer Token (JWT).
 
 ## Configurações para os Testes
-- Crie um arquivo .env na pasta raiz contendo as propriedades BASE_URL_REST E BASE_URL_GRAPHQL, com a URL base desses serviços.
+- Crie um arquivo .env na pasta raiz contendo as propriedades BASE_URL_REST e BASE_URL_GRAPHQL, com a URL base desses serviços conforme o exemplo abaixo:
+```
+BASE_URL_REST: "http://localhost:3000"
+BASE_URL_GRAPHQL: "http://localhost:4000/graphql"
+```
 
 ## Banco de dados
 - Os dados são armazenados em memória, em variáveis.
