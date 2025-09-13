@@ -1,0 +1,24 @@
+{
+  "data": {
+    "pets": [
+      {
+        "id": "1",
+        "name": "Luke",
+        "type": "Cão",
+        "userId": "1"
+      },
+      {
+        "id": "2",
+        "name": "Maurício",
+        "type": "Jabuti",
+        "userId": "1"
+      },
+      {
+        "id": "3",
+        "name": "Pandora",
+        "type": "Gato",
+        "userId": "2"
+      }
+    ]
+  }
+}

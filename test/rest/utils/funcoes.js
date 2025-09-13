@@ -1,7 +1,8 @@
 const request = require('supertest');
+require('dotenv').config();
 
 async function excluirPet(idDoPet, token) {
-    return await request('http://localhost:3000')
+    return await request(process.env.BASE_URL_REST)
         .delete(`/pets/${idDoPet}`)
         .set('Authorization', `Bearer ${token}`);
 }

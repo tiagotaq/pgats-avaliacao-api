@@ -32,7 +32,6 @@ describe('Pets external', () => {
                 .set('Authorization', `Bearer ${token}`)
                 .send(postPetBody);
             
-
             const postPetResponse = require('../fixtures/respostas/pets/postPetsSuccessfully.json');
             expect(resposta.status).to.equal(201);
             expect(resposta.body).excluding('id').to.deep.equal(postPetResponse)
@@ -52,7 +51,7 @@ describe('Pets external', () => {
                 .send(postPetBody);
             
             expect(resposta.status).to.equal(400);
-            expect(resposta.body.error).to.equal('Name and type required')
+            expect(resposta.body.error).to.equal('Name and type required');
         });
 
         it('Não deve cadastrar um pet caso não tenha sido preenchido o tipo', async () => {
@@ -77,7 +76,7 @@ describe('Pets external', () => {
             expect(resposta.body.error).to.equal('Pet with this name already exists for this user')
         });
         it('Não deve cadastrar um pet sem estar autenticado', async () => {
-            const postPetBody = require('../fixtures/requisicoes/pets/postPetsNameEqual.json');
+            const postPetBody = require('../fixtures/requisicoes/pets/postPetsSuccessfully.json');
             const resposta = await request(process.env.BASE_URL_REST)
                 .post('/pets')
                 .send(postPetBody);

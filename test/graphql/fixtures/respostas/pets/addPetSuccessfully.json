@@ -1,0 +1,9 @@
+{
+  "data": {
+    "addPet": {
+      "name": "Max",
+      "type": "cão",
+      "userId": "1"
+    }
+  }
+}

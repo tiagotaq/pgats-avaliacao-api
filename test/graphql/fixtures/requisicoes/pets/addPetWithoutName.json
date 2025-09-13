@@ -1,0 +1,7 @@
+{
+    "query": "mutation Mutation($name: String!, $type: String!) { addPet(name: $name, type: $type) { id name type userId } }",
+    "variables": {
+        "name": "",
+        "type": "cão"
+    }
+}

@@ -1,0 +1,3 @@
+{
+    "query": "query Query { pets { id name type userId } }"
+}
