@@ -58,5 +58,26 @@ describe('Pets Controller', () => {
             expect(resposta.status).to.equal(400);
             expect(resposta.body.error).to.equal('Name and type required');
         });
+        it('Quando preencho um nome já utilizado, retorno o status 409 e a mensagem do erro', async () => {
+            const postPetBody = require('../fixtures/requisicoes/pets/postPetsNameEqual.json');
+            petServiceMock.returns(null);
+            const resposta = await request(app)
+                .post('/pets')
+                .send(postPetBody);
+            expect(resposta.status).to.equal(409);
+            expect(resposta.body.error).to.equal('Pet with this name already exists for this user');
+        });
     });
+    context('getPets', () => {
+        beforeEach(() => {
+            petServiceMock = sinon.stub(petService, 'getAllPets');
+        })
+        it('Ao obter todos os pets, retorno para o usuário o objeto devolvido pela service', async () => {
+            const objetoRetornadoPelaService = require('../fixtures/respostas/pets/getAllPetsSuccessfully.json');
+            petServiceMock.returns(objetoRetornadoPelaService);
+            const resposta = await request(app)
+                .get('/pets')
+            expect(resposta.body).to.deep.equal(objetoRetornadoPelaService);
+        });
+    })
 });
