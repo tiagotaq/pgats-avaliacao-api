@@ -12,6 +12,16 @@ authMiddlewareMock = sinon.stub(authMiddleware, 'authenticateToken');
 authMiddlewareMock.callsFake(utilsFuncoes.callsFakeAuthenticateToken);
 const app = require('../../../rest/app');
 
+/*
+ATENÇÃO PARA QUEM FOR CORRIGIR O TRABALHO! 
+
+Eu coloquei essa informação no README.md, mas reforço aqui.
+Para rodar os testes da API REST e GraphQL, é necessário ter o arquivo ".env" na raiz do projeto, com o conteúdo seguindo o exemplo abaixo:
+
+BASE_URL_REST: "http://localhost:3000" 
+BASE_URL_GRAPHQL: "http://localhost:4000/graphql"
+*/
+
 describe('Pets Controller', () => {
     afterEach(() => {
         sinon.restore();
