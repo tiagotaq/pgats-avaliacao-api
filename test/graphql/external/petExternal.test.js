@@ -23,7 +23,7 @@ describe('Pets external', () => {
             .send(payloadLogin);
         token = respostaLogin.body.data.login
     })
-    context('mutation addPet', () => {
+    context('Mutation addPet', () => {
         it('Deve cadastrar um pet', async () => {
             const payloadPet = require('../fixtures/requisicoes/pets/addPetSuccessfully.json');
             const resposta = await request(process.env.BASE_URL_GRAPHQL)
@@ -33,7 +33,7 @@ describe('Pets external', () => {
 
             const petResponse = require('../fixtures/respostas/pets/addPetSuccessfully.json');
             expect(resposta.status).to.equal(200);
-            expect(resposta.body).excludingEvery('id').to.deep.equal(petResponse)
+            expect(resposta.body).excludingEvery('id').to.deep.equal(petResponse);
 
             //Exclusão do cadastro realizado para repetibilidade desse teste (visto que existe uma regra na API de não poder haver mais um pet com o mesmo nome para o mesmo usuário) e para independência dos testes dos GETs de pets
             const idDoPet = resposta.body.data.addPet.id;
@@ -69,7 +69,7 @@ describe('Pets external', () => {
                 .send(payloadPet);
 
             expect(resposta.status).to.equal(200);
-            expect(resposta.body.errors[0].message).to.equal('Pet with this name already exists for this user')
+            expect(resposta.body.errors[0].message).to.equal('Pet with this name already exists for this user');
         });
         it('Não deve cadastrar um pet sem estar autenticado', async () => {
             const payloadPet = require('../fixtures/requisicoes/pets/addPetSuccessfully.json');
@@ -78,7 +78,7 @@ describe('Pets external', () => {
                 .send(payloadPet);
 
             expect(resposta.status).to.equal(200);
-            expect(resposta.body.errors[0].message).to.equal('Token required')
+            expect(resposta.body.errors[0].message).to.equal('Token required');
         });
     })
     context('Query pets', () => {
@@ -91,7 +91,7 @@ describe('Pets external', () => {
 
             const getPetResponse = require('../fixtures/respostas/pets/petsSuccessfully.json');
             expect(resposta.status).to.equal(200);
-            expect(resposta.body).to.deep.equal(getPetResponse)
+            expect(resposta.body).to.deep.equal(getPetResponse);
         });
     });
 
